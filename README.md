@@ -45,3 +45,5 @@ docker compose pull && docker compose up -d artex   # 更新镜像
 
 - `secure/` — 加密备份（运行时配置与数据、扫描任务产物分片），解密方法见 `secure/README.md`。
 - `reports/report_redacted.png` — 渗透测试报告脱敏样例图（系统名 / IP / 口令均已占位）。
+
+> 说明：`.env.example` 中的 `ARTEX_LLM_BASE_URL` 为占位地址，请替换为你自己的 OpenAI 兼容网关。
