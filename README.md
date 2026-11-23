@@ -1,5 +1,9 @@
 # ARTEX 部署（Docker Compose）
 
+![报告脱敏样例](reports/report_redacted.png)
+
+> 上图：ARTEX 输出的渗透测试报告脱敏样例，系统名 / IP / 口令均已占位。
+
 内网服务器部署记录：`ruoji6/artex:latest`（v0.3.30）+ `postgres:16-alpine`。
 
 ## 目录说明
