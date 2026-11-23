@@ -3,113 +3,110 @@
 <head>
 <meta charset="utf-8">
 <style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    width: 1400px; font-family: "Microsoft YaHei","PingFang SC",sans-serif;
-    background: #f4f6f9; color: #1b2430; padding: 44px 48px;
-  }
-  .head { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 26px; }
-  .title { font-size: 34px; font-weight: 700; letter-spacing: 1px; }
-  .sub { margin-top: 10px; font-size: 14px; color: #6b7a8d; line-height: 1.9; }
-  .badge {
-    background: #fff3e0; color: #a85800; border: 1px solid #f0c48a;
-    padding: 8px 14px; border-radius: 8px; font-size: 13px; font-weight: 600;
-  }
-  .meta { display: flex; gap: 14px; margin-bottom: 26px; }
-  .meta div {
-    flex: 1; background: #fff; border: 1px solid #e3e8ef; border-radius: 12px; padding: 16px 20px;
-  }
-  .meta .k { font-size: 12px; color: #7b8794; letter-spacing: .5px; }
-  .meta .v { margin-top: 8px; font-size: 19px; font-weight: 600; }
-  .stats { display: flex; gap: 14px; margin-bottom: 28px; }
-  .stat { flex: 1; background: #fff; border-radius: 12px; padding: 18px 20px; border-left: 5px solid #cfd8e3; border-top: 1px solid #e3e8ef; border-right: 1px solid #e3e8ef; border-bottom: 1px solid #e3e8ef;}
-  .stat .n { font-size: 30px; font-weight: 700; }
-  .stat .l { font-size: 13px; color: #7b8794; margin-top: 4px; }
-  .c-critical { border-left-color: #d93025; } .c-critical .n { color: #d93025; }
-  .c-high { border-left-color: #e8710a; }     .c-high .n { color: #e8710a; }
-  .c-medium { border-left-color: #f0b400; }   .c-medium .n { color: #bd8b00; }
-  .c-low { border-left-color: #1a73e8; }      .c-low .n { color: #1a73e8; }
-  table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 12px; overflow: hidden; border: 1px solid #e3e8ef; }
-  thead th {
-    background: #f8fafc; text-align: left; font-size: 13px; color: #5b6b7c;
-    padding: 13px 18px; border-bottom: 1px solid #e3e8ef; font-weight: 600;
-  }
-  tbody td { padding: 12px 18px; font-size: 14px; border-bottom: 1px solid #edf1f5; }
-  tbody tr:last-child td { border-bottom: none; }
-  .sev { display: inline-block; padding: 3px 10px; border-radius: 6px; font-size: 12px; font-weight: 700; }
-  .s-critical { background: #fdeceb; color: #d93025; }
-  .s-high { background: #fdf0e4; color: #e8710a; }
-  .s-medium { background: #fdf7e3; color: #a67c00; }
-  .s-low { background: #eaf1fd; color: #1a73e8; }
-  .cls { color: #5b6b7c; font-size: 13px; }
-  .foot { margin-top: 22px; font-size: 12.5px; color: #7b8794; line-height: 1.9; }
-  .foot strong { color: #475569; }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{width:1400px;background:#f6f8fa;color:#1f2328;font-family:"Microsoft YaHei","PingFang SC",sans-serif;padding:40px 44px 32px}
+  .top{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #d8dee4;padding-bottom:18px}
+  .brand{display:flex;align-items:center;gap:12px}
+  .logo{width:34px;height:34px;border-radius:9px;background:#24292f;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px}
+  .brandname{font-size:15px;font-weight:600;letter-spacing:.5px}
+  .tag{font-size:11px;color:#57606a;border:1px solid #d0d7de;border-radius:20px;padding:3px 10px;margin-left:6px}
+  .right{font-size:12px;color:#57606a}
+  h1{font-size:27px;font-weight:700;margin:26px 0 6px}
+  .sub{font-size:13px;color:#57606a;line-height:1.9}
+  .cards{display:flex;gap:12px;margin:22px 0 8px}
+  .card{flex:1;background:#fff;border:1px solid #d8dee4;border-radius:10px;padding:14px 18px}
+  .card .k{font-size:11.5px;color:#6e7781}
+  .card .v{font-size:17px;font-weight:600;margin-top:6px}
+  .sevbar{display:flex;gap:10px;margin:14px 0 22px}
+  .sev{flex:1;background:#fff;border:1px solid #d8dee4;border-left-width:5px;border-radius:9px;padding:12px 16px;display:flex;align-items:baseline;gap:8px}
+  .sev b{font-size:22px}
+  .sev span{font-size:12px;color:#6e7781}
+  .c{color:#cf222e;border-left-color:#cf222e}
+  .h{color:#bc4c00;border-left-color:#bc4c00}
+  .m{color:#9a6700;border-left-color:#d4a72c}
+  .l{color:#1f6feb;border-left-color:#1f6feb}
+  table{width:100%;border-collapse:collapse;background:#fff;border:1px solid #d8dee4;border-radius:10px;overflow:hidden}
+  thead th{background:#f6f8fa;font-size:12px;color:#57606a;text-align:left;padding:11px 14px;border-bottom:1px solid #d8dee4;font-weight:600}
+  tbody td{padding:10px 14px;font-size:13px;border-bottom:1px solid #eaeef2;vertical-align:top;line-height:1.55}
+  tbody tr:last-child td{border-bottom:none}
+  .id{color:#6e7781;font-size:12px;width:38px}
+  .pill{display:inline-block;padding:2px 8px;border-radius:5px;font-size:11.5px;font-weight:700;white-space:nowrap}
+  .p-c{background:#ffebe9;color:#cf222e}
+  .p-h{background:#fff1e5;color:#bc4c00}
+  .p-m{background:#fff8c5;color:#9a6700}
+  .p-l{background:#ddf4ff;color:#1f6feb}
+  .cls{color:#57606a;font-size:12px;width:250px}
+  .mask{color:#8250df;font-weight:600}
+  .foot{margin-top:18px;font-size:12px;color:#6e7781;line-height:1.9}
+  .foot b{color:#24292f}
 </style>
 </head>
 <body>
-  <div class="head">
-    <div>
-      <div class="title">内网资产渗透测试报告</div>
-      <div class="sub">
-        被测范围：██ 个内网业务系统 · 授权测试 · 扫描模式：深度<br>
-        报告编号：ARTEX-2026-████　生成时间：2026-11-23
-      </div>
+  <div class="top">
+    <div class="brand">
+      <div class="logo">A</div>
+      <div class="brandname">ARTEX<span class="tag">自主渗透测试</span></div>
     </div>
-    <div class="badge">已脱敏版本 · 禁止外传</div>
+    <div class="right">任务 #1 · 已归档　|　报告版本 v1　|　2026-11-23</div>
   </div>
 
-  <div class="meta">
-    <div><div class="k">执行引擎</div><div class="v">ARTEX 自主渗透测试</div></div>
-    <div><div class="k">任务状态</div><div class="v">已完成 · 待复核</div></div>
-    <div><div class="k">有效发现</div><div class="v">23 项</div></div>
-    <div><div class="k">最高等级</div><div class="v">严重（Critical）</div></div>
+  <h1>内网资产渗透测试报告</h1>
+  <div class="sub">
+    目标：██ 内网 ██ 个业务系统（授权测试，深度模式）　|　执行引擎：ARTEX v0.3.30<br>
+    本页为<b>报告脱敏样例</b>：漏洞名称与判定结论保持原样，仅对 IP、端口、账号口令、业务方标识做占位处理。
   </div>
 
-  <div class="stats">
-    <div class="stat c-critical"><div class="n">6</div><div class="l">严重 Critical</div></div>
-    <div class="stat c-high"><div class="n">15</div><div class="l">高危 High</div></div>
-    <div class="stat c-medium"><div class="n">1</div><div class="l">中危 Medium</div></div>
-    <div class="stat c-low"><div class="n">1</div><div class="l">低危 Low</div></div>
+  <div class="cards">
+    <div class="card"><div class="k">发现总数</div><div class="v">28</div></div>
+    <div class="card"><div class="k">最高等级</div><div class="v">Critical（严重）</div></div>
+    <div class="card"><div class="k">已实证链路</div><div class="v">默认口令 → RCE / 凭据泄露</div></div>
+    <div class="card"><div class="k">涉及面</div><div class="v">K8s 集群 / 中间件 / 镜像仓库</div></div>
+  </div>
+
+  <div class="sevbar">
+    <div class="sev c"><b>8</b><span>Critical</span></div>
+    <div class="sev h"><b>15</b><span>High</span></div>
+    <div class="sev m"><b>1</b><span>Medium</span></div>
+    <div class="sev l"><b>4</b><span>Low</span></div>
   </div>
 
   <table>
-    <thead>
-      <tr>
-        <th style="width:90px">等级</th>
-        <th style="width:330px">风险类型</th>
-        <th>发现摘要（系统名 / 地址 / 凭据已占位）</th>
-      </tr>
-    </thead>
+    <thead><tr><th>#</th><th>等级</th><th>风险类型</th><th>漏洞名称</th></tr></thead>
     <tbody>
-      <tr><td><span class="sev s-critical">Critical</span></td><td class="cls">默认口令 / 未授权接管</td><td>配置中心默认口令致配置中心被完全接管</td></tr>
-      <tr><td><span class="sev s-critical">Critical</span></td><td class="cls">默认口令 / 任意代码执行</td><td>任务调度平台默认口令 + 脚本任务致远程代码执行</td></tr>
-      <tr><td><span class="sev s-critical">Critical</span></td><td class="cls">弱口令 / 凭据泄露</td><td>共享数据库服务弱口令，泄露跨业务库凭据</td></tr>
-      <tr><td><span class="sev s-critical">Critical</span></td><td class="cls">默认凭据 / 超管接管</td><td>业务系统 C 框架默认口令致超级管理员接管（已验证）</td></tr>
-      <tr><td><span class="sev s-critical">Critical</span></td><td class="cls">默认凭据 / 仓库接管</td><td>私有镜像仓库默认口令致镜像与配置全量接管</td></tr>
-      <tr><td><span class="sev s-critical">Critical</span></td><td class="cls">命令执行</td><td>调度中心弱口令 + 任务执行通道致应用服务器 RCE</td></tr>
-      <tr><td><span class="sev s-high">High</span></td><td class="cls">默认凭据</td><td>业务系统 A 框架默认口令致超级管理员接管</td></tr>
-      <tr><td><span class="sev s-high">High</span></td><td class="cls">默认凭据</td><td>业务系统 B 框架默认口令致超级管理员接管</td></tr>
-      <tr><td><span class="sev s-high">High</span></td><td class="cls">弱口令</td><td>消息队列管理控制台弱口令</td></tr>
-      <tr><td><span class="sev s-high">High</span></td><td class="cls">弱口令 / 未授权访问</td><td>缓存服务弱口令致未授权访问</td></tr>
-      <tr><td><span class="sev s-high">High</span></td><td class="cls">任意文件写入</td><td>缓存服务弱口令致宿主机 root 任意文件写入</td></tr>
-      <tr><td><span class="sev s-high">High</span></td><td class="cls">未授权 / 敏感数据泄露</td><td>安全运营平台全部 API 未授权访问，敏感数据全量泄露</td></tr>
-      <tr><td><span class="sev s-high">High</span></td><td class="cls">任意文件读取 / 路径穿越</td><td>后台文件配置与本地存储组合致后端任意文件读取</td></tr>
-      <tr><td><span class="sev s-high">High</span></td><td class="cls">云凭据泄露</td><td>对象存储配置明文暴露 AccessKey / Secret</td></tr>
-      <tr><td><span class="sev s-high">High</span></td><td class="cls">认证绕过 / 免密登录</td><td>计算平台登录接口认证绕过，可任意身份免密登录</td></tr>
-      <tr><td><span class="sev s-high">High</span></td><td class="cls">未授权 / 弱口令</td><td>应用诊断组件通道未授权接管 + 控制端弱口令</td></tr>
-      <tr><td><span class="sev s-high">High</span></td><td class="cls">弱口令 / 监控控制台</td><td>数据库监控控制台弱口令，泄露数据源连接串</td></tr>
-      <tr><td><span class="sev s-high">High</span></td><td class="cls">任意文件写入 / 路径穿越</td><td>文件配置与存储模式切换致容器内任意文件写入</td></tr>
-      <tr><td><span class="sev s-high">High</span></td><td class="cls">默认凭据</td><td>运维管理平台默认口令致管理端接管</td></tr>
-      <tr><td><span class="sev s-high">High</span></td><td class="cls">未授权 / 身份伪造</td><td>集群计算实例同款免密登录接口致身份伪造</td></tr>
-      <tr><td><span class="sev s-high">High</span></td><td class="cls">默认口令</td><td>Web 控制台弱口令致调试通道暴露</td></tr>
-      <tr><td><span class="sev s-medium">Medium</span></td><td class="cls">越权 / 会话劫持</td><td>后端会话令牌可枚举，导致任意账号会话劫持</td></tr>
-      <tr><td><span class="sev s-low">Low</span></td><td class="cls">未授权访问</td><td>监控采集组件指标接口未授权访问</td></tr>
+      <tr><td class="id">1</td><td><span class="pill p-h">High</span></td><td class="cls">弱口令 / 未授权访问</td><td>Redis 弱口令 <span class="mask">●●●●●●</span> 导致未授权访问</td></tr>
+      <tr><td class="id">2</td><td><span class="pill p-h">High</span></td><td class="cls">弱口令 / 默认凭据</td><td>供应商门户 yudao 框架默认口令 <span class="mask">admin/●●●</span> 致超管接管</td></tr>
+      <tr><td class="id">3</td><td><span class="pill p-h">High</span></td><td class="cls">弱口令 / 默认凭据</td><td>内部平台 yudao 框架默认口令 <span class="mask">admin/●●●</span> 致超管接管</td></tr>
+      <tr><td class="id">4</td><td><span class="pill p-h">High</span></td><td class="cls">弱口令</td><td>RabbitMQ Management 管理台弱口令（<span class="mask">admin/●●●</span>，administrator 全权限）</td></tr>
+      <tr><td class="id">5</td><td><span class="pill p-h">High</span></td><td class="cls">任意文件写入</td><td><span class="mask">10.0.x.x:30379</span> Redis 弱口令导致 root 任意文件写入（/etc/cron.d 等）</td></tr>
+      <tr><td class="id">6</td><td><span class="pill p-m">Medium</span></td><td class="cls">越权 / 会话劫持</td><td>yudao 后端在线用户 accessToken 可枚举致任意账号会话劫持</td></tr>
+      <tr><td class="id">7</td><td><span class="pill p-h">High</span></td><td class="cls">未授权访问 / 敏感信息泄露</td><td><span class="mask">10.0.x.x:8080</span> 安全运营中心全部 API 未授权访问（敏感数据全量泄露+任意写）</td></tr>
+      <tr><td class="id">8</td><td><span class="pill p-h">High</span></td><td class="cls">任意文件读取 / 路径穿越</td><td>供应商门户 super_admin 可组合“文件配置+本地存储”实现后端任意文件读取（已读出 K8s ServiceAccount Token）</td></tr>
+      <tr><td class="id">9</td><td><span class="pill p-h">High</span></td><td class="cls">敏感信息泄露 / 云凭据泄露</td><td>供应商门户文件存储配置明文泄露真实云 OSS AccessKey/Secret（主存储 <span class="mask">██</span> 桶）</td></tr>
+      <tr><td class="id">10</td><td><span class="pill p-c">Critical</span></td><td class="cls">弱口令 / 数据库凭据泄露</td><td>共享 MySQL <span class="mask">10.0.x.x:30657</span> 凭据 <span class="mask">●●●/●●●</span> 且为全库超级权限（GRANT ALL ON *.*）</td></tr>
+      <tr><td class="id">11</td><td><span class="pill p-c">Critical</span></td><td class="cls">默认口令 / 配置中心未授权接管</td><td>Nacos 配置中心 <span class="mask">10.0.x.x:8848</span> 默认口令 <span class="mask">●●●/●●●</span>，全部命名空间配置可读可改（配置中心沦陷→全栈凭据泄露+配置投毒 RCE 面）</td></tr>
+      <tr><td class="id">12</td><td><span class="pill p-c">Critical</span></td><td class="cls">默认口令 / 调度平台任意代码执行</td><td>xxl-job 调度中心 <span class="mask">10.0.x.x:30080</span> 默认口令 <span class="mask">admin/●●●</span> 沦陷，GLUE_SHELL 任意代码执行链已建立（任务已创建并触发）</td></tr>
+      <tr><td class="id">13</td><td><span class="pill p-l">Low</span></td><td class="cls">未授权访问</td><td>K8s 双节点 node_exporter 未授权访问（<span class="mask">10.0.x.49/.45:9101</span>）</td></tr>
+      <tr><td class="id">14</td><td><span class="pill p-h">High</span></td><td class="cls">认证绕过 / 未授权访问</td><td><span class="mask">10.0.x.x:30704</span> 计算器 fsLogin 未授权免密登录（任意员工身份伪造+跨系统 poros 会话+万能密码后门）</td></tr>
+      <tr><td class="id">15</td><td><span class="pill p-h">High</span></td><td class="cls">未授权访问 / 弱口令</td><td>Arthas Tunnel Server 未授权接管 + Agent 弱口令（<span class="mask">●●●/●●●</span>）导致全部 12 个后端 JVM/容器沦陷</td></tr>
+      <tr><td class="id">16</td><td><span class="pill p-c">Critical</span></td><td class="cls">默认口令 / 弱口令</td><td>TMS 生产系统 jeecg-boot 默认口令 <span class="mask">admin/●●●</span> 致超管接管（验证码可机器识别）</td></tr>
+      <tr><td class="id">17</td><td><span class="pill p-h">High</span></td><td class="cls">弱口令 / 监控控制台未授权</td><td>TMS 后端 Druid 监控控制台弱口令 <span class="mask">admin/●●●</span>（泄露云 RDS 连接信息 / SQL 审计 / 会话）</td></tr>
+      <tr><td class="id">18</td><td><span class="pill p-h">High</span></td><td class="cls">任意文件写入 / 路径穿越</td><td>供应商门户 super_admin 组合“master 切换+本地存储”实现后端容器任意文件写入（root 权限，可覆写运行时 classpath jar）</td></tr>
+      <tr><td class="id">19</td><td><span class="pill p-c">Critical</span></td><td class="cls">命令执行（调度中心弱口令+GLUE RCE）</td><td>xxl-job-admin 2.2.0 默认口令 + GLUE_SHELL 调度任务导致应用容器 root 命令执行（admin→执行器 RCE 全链路实证）</td></tr>
+      <tr><td class="id">20</td><td><span class="pill p-h">High</span></td><td class="cls">弱口令 / 默认凭据</td><td>ClawManager（OpenClaw 管理平台）默认口令 <span class="mask">admin/●●●</span> 致管理面接管与凭据泄露</td></tr>
+      <tr><td class="id">21</td><td><span class="pill p-c">Critical</span></td><td class="cls">弱口令 / 默认凭据</td><td>Harbor 私有镜像仓库 v2.5.3 默认口令 <span class="mask">admin/●●●</span> 致 sysadmin 接管（镜像全读+可投毒供应链）</td></tr>
+      <tr><td class="id">22</td><td><span class="pill p-h">High</span></td><td class="cls">未授权访问 / 身份伪造</td><td>组2 集群计算器实例（<span class="mask">10.0.x.x:30704</span>）存在同款 fsLogin 未授权身份伪造（跨集群复现）</td></tr>
+      <tr><td class="id">23</td><td><span class="pill p-h">High</span></td><td class="cls">弱口令 / 默认口令</td><td>Arthas webconsole NodePort 弱口令（<span class="mask">●●●/●●●</span>）直连 9 个业务 JVM 全功能控制台</td></tr>
+      <tr><td class="id">24</td><td><span class="pill p-l">Low</span></td><td class="cls">文件上传黑名单绕过 / 未授权上传</td><td>TMS JimuReport /jmreport/upload 未授权访问+上传黑名单绕过（jspx/yml/svg 放行）</td></tr>
+      <tr><td class="id">25</td><td><span class="pill p-c">Critical</span></td><td class="cls">凭据泄露 / 敏感信息暴露</td><td>Harbor 镜像取证链泄露全套中间件与数据库凭据：组4 集群 MySQL root 全权限 / Redis / RabbitMQ / Nacos 全部沦陷</td></tr>
+      <tr><td class="id">26</td><td><span class="pill p-l">Low</span></td><td class="cls">未授权访问 / 信息泄露</td><td>微服务网关聚合 Swagger 文档未授权访问（260 接口清单泄露）</td></tr>
+      <tr><td class="id">27</td><td><span class="pill p-l">Low</span></td><td class="cls">信息泄露 / 敏感凭证暴露</td><td>Metabase v0.56.4 初始化令牌（setup-token）经公开 API 泄露（二次接管已被版本逻辑拦截）</td></tr>
+      <tr><td class="id">28</td><td><span class="pill p-c">Critical</span></td><td class="cls">远程命令执行（调度平台接管）</td><td>组4 集群 xxl-job 3.0.0 调度中心 RCE（容器 root）——微服务容器任意命令执行</td></tr>
     </tbody>
   </table>
 
   <div class="foot">
-    <strong>脱敏说明：</strong>本图已对被测系统名称、内网 IP 地址、端口、账号口令、云凭据、业务标识等敏感信息做占位与替换处理，仅用于内部留档与汇报演示。<br>
-    <strong>处置建议：</strong>严重项须优先处置——统一整改默认口令与弱口令、关闭未授权管理端点、收紧配置中心与调度平台访问控制、轮换已泄露的云与数据库凭据。
+    <b>脱敏口径：</b>漏洞名称与等级按 ARTEX 原始发现原样保留；仅将内网 IP/端口替换为 <span class="mask">10.0.x.x</span>、账号口令替换为 <span class="mask">●●●</span>、业务方与云存储标识替换为占位符。<br>
+    <b>处置建议：</b>8 个 Critical 全部落在「默认/弱口令 → 直接接管 → RCE 或凭据扩散」同一条链上，应优先统一整改默认口令、关闭未授权管理面、轮换已泄露的数据库与云凭据。
   </div>
 </body>
 </html>
