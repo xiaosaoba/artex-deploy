@@ -51,3 +51,53 @@ docker compose pull && docker compose up -d artex   # 更新镜像
 - `reports/report_redacted.png` — 渗透测试报告脱敏样例图（系统名 / IP / 口令均已占位）。
 
 > 说明：`.env.example` 中的 `ARTEX_LLM_BASE_URL` 为占位地址，请替换为你自己的 OpenAI 兼容网关。
+
+## 配置大模型（添加 LLM）
+
+ARTEX 需要一个大模型来驱动 Agent 与报告生成。两种方式任选其一。
+
+### 方式 A：环境变量（启动时注入，最简单）
+
+编辑 `.env`：
+
+```bash
+ARTEX_LLM_PROVIDER=openai                                          # 提供方类型
+ARTEX_LLM_MODEL=glm-5.3                                            # 模型名，必须是你的 Key 有权限的
+ARTEX_LLM_BASE_URL=https://your-llm-gateway.example.com/v1          # OpenAI 兼容网关地址
+OPENAI_API_KEY=<你的 API Key>
+```
+
+```bash
+docker compose up -d artex
+docker compose logs artex | grep "LLM configured"   # 期望：LLM configured from env: openai / <模型名>
+```
+
+### 方式 B：Web 界面新增模型配置（可多套、可切换）
+
+1. 浏览器打开 `http://<服务器IP>:8787`，用管理员登录（首次访问走 `/setup` 设置密码）。
+2. 左侧 **系统 → LLM**，点 **新建模型配置**。
+3. 按下表填写：
+
+| 字段 | 填什么 | 说明 |
+| --- | --- | --- |
+| 名称 | 自定义，如「安全渗透测试」 | 仅用于区分 |
+| 格式 / Format | **OpenAI (Chat Completions)** | 只支持 `anthropic`、`openai`、`openai-responses`、`jev` 四种，通用网关一律选 `openai` |
+| 模型 / Model | 如 `glm-5.3` | 必须是该 Key 已授权的模型，否则调用返回 401 |
+| Base URL | `https://your-llm-gateway.example.com/v1` | 需带 `/v1`；本地 Ollama 可填 `http://host:11434/v1` |
+| API Key | 你的 Key | 存在 `llm_profiles` 表里，不再走环境变量 |
+| 设为默认 / is_default | 勾选 | 多套配置时决定当前生效的那套 |
+| 流式 / streaming | 勾选 | 关闭后部分网关兼容性更好 |
+
+4. 保存后在 **LLM** 页面点一次 **测试/握手**，或用任意任务跑一轮确认。
+
+### 校验与排错
+
+```bash
+docker compose logs artex | grep -E "built provider|LLM reapplied|401"
+```
+
+- `built provider for LLM profile 1` + `LLM reapplied from active profile`：UI 配置已生效。
+- `401 INVALID_API_KEY`：Key 无效或**该 Key 没有所填模型的权限**（换成有权限的模型再试）。
+- `LLM CONNECTION FAILED`：Base URL/网络不通，先在容器内验证：
+  `docker exec artex-artex-1 curl -sS -H "Authorization: Bearer $OPENAI_API_KEY" <BASE_URL>/models`
+- 改了 `.env` 必须 `docker compose up -d artex` 重建容器才生效；改了 UI 配置即时生效，无需重启。
